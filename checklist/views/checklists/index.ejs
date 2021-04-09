@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <% checklist.basics.forEach(function(c) { %>
+    <div>
+        <h6>Essentials</h6>
+        <td><%= c.essentials %></td>
+    </div>
+    <div>
+        <h6>Technology</h6>
+        <ul><%= c.technology %></ul>
+    </div>
+    <div>
+        <h6>Clothing</h6>
+        <ul><%= c.clothing %></ul>
+    </div>
+    <div>
+        <h6>Accessories</h6>
+        <ul><%= c.accessories %></ul>
+    </div>
+    <div>
+        <h6>Entertainment</h6>
+        <ul><%= c.entertainment %></ul>
+    </div>
+    <div>
+        <h6>Toiletries</h6>
+        <ul><%= c.toiletries %></ul>
+    </div>
+    <% }); %>
+  </body>
+</html>
