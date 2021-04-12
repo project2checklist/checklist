@@ -3,11 +3,14 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const methodOverride = require('method-override');
 require('./config/database')
 
 var indexRouter = require('./routes/index');
 var checklistRouter = require('./routes/checklists');
 const basicsRouter = require('./routes/basics');
+const fallRouter = require('./routes/fall');
+const springRouter = require('./routes/spring');
 
 var app = express();
 
@@ -20,10 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/checklists', checklistRouter);
 app.use('/', basicsRouter);
+app.use('/fall', fallRouter);
+app.use('/spring', springRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
