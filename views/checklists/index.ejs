@@ -9,28 +9,48 @@
     <h1><%= title %></h1>
 
     <form id="add-an-item" action="/checklists/new" method="GET">
-      <button type="submit">Add an Item</button>
+      <button type="submit">Create Checklist</button>
     </form>
 
   
     <table>
       <thead>
         <tr>
-          <th>Essentials</th>
-          <th>Technology</th>
-          <th>Clothing</th>
-          <th>Accesories</th>
-          <th>Entertainment</th>
-          <th>Toiletries</th>
+          <th>Date of Trip</th>
+          <th>Destination</th>
+          <th>Length of Stay</th>
+          
         </tr>
       </thead>
       <tbody>
-        <% checklists.forEach(function(c) { %>
+        <% checklists.forEach(function(c, idx) { %>
         <tr>
-          <td><%= c.name %></td>
+         
+       
+          <td><%= c.dateOfTrip %></td>
+          <td><%= c.destination %></td>
+          <td><%= c.lengthOfStay %></td>
+          <td>
+            <td>
+              <form
+            action="/checklists/<%= c._id %>"
+            method="GET" 
+          >
+          <button type="submit">Trip Details</button></form></td>
+          <td>
+          <form
+          action="/checklists/<%= idx %>?_method=DELETE"
+          class="delete-form"
+          method="POST" 
+        >
+        <button type="submit">Delete</button></form></td>
+          
         </tr>
+        
         <% }); %>
       </tbody>
+    
     </table>
+    
   </body>
 </html>

@@ -8,12 +8,16 @@
   <body>
     <h1><%= title %></h1>
     <form action="/checklists" method="POST">
-      <label>Item:
-        <input type="text" name="item">
-      </label><br>
+    
+      <label>Date of Trip </labeL>
+        <input type="datetime-local" name="dateOfTrip">
+    <label>Destination</label>
+    <input type="text" name="destination">
+    <label>Length of Stay</label>
+    <input type="text" name="lengthOfStay">
       
     
-      <label>Section:
+      <!-- <label>Section:
         <select name="section">
           <option value="Essentials">Essentials</option>
           <option value="Technology">Technology</option>
@@ -22,9 +26,9 @@
           <option value="Entertainment">Entertainment</option>
           <option value="Clothing">Clothing</option>
         </select>
-      </label><br>
+      </label><br> -->
 
-      <input type="submit" value="Add Item">
+      <input type="submit" value="Add Checklist">
     </form> 
       </body>
       </html>
