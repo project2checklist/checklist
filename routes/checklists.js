@@ -3,6 +3,17 @@ var router = express.Router();
 const checklistsCtrl = require('../controllers/checklists');
 
 /* GET users listing. */
+
+//Show the main page with all items 
 router.get('/', checklistsCtrl.index);
+
+
+
+router.get("/new", checklistsCtrl.new)
+//Post all items 
+router.post('/', checklistsCtrl.create)
+
+
+//Add an item 
 
   module.exports = router;
