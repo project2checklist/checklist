@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+
+  <body>
+    <h1><%= title %></h1>
+
+    <form id="add-an-item" action="/checklists/new" method="GET">
+      <button type="submit">Add an Item</button>
+    </form>
+
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Essentials</th>
+          <th>Technology</th>
+          <th>Clothing</th>
+          <th>Accesories</th>
+          <th>Entertainment</th>
+          <th>Toiletries</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% checklists.forEach(function(c) { %>
+        <tr>
+          <td><%= c.name %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
+</html>
