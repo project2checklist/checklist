@@ -1,9 +1,12 @@
+const checklist = require('../models/checklist');
 const Checklist = require('../models/checklist');
 
 module.exports = {
     index,
     new: newItem,
-    create
+    create,
+    delete: deleteTrip,
+    show
 }
 
 function index(req, res) {
@@ -28,3 +31,16 @@ function create(req,res){
   });
 }
 
+function deleteTrip(req, res){
+        Checklist.deleteOne(req.params.id);
+        res.redirect("/checklists");
+      }
+      
+
+function show(req, res){
+    const checklist = c._id;
+    Checklist.findById(req.params.id, function(err, checklist){
+        res.render(`/checklists/${c._id}`);
+    });
+    
+}

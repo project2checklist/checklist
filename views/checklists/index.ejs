@@ -23,12 +23,28 @@
         </tr>
       </thead>
       <tbody>
-        <% checklists.forEach(function(c) { %>
+        <% checklists.forEach(function(c, idx) { %>
         <tr>
+         
+       
           <td><%= c.dateOfTrip %></td>
           <td><%= c.destination %></td>
           <td><%= c.lengthOfStay %></td>
-          <td><a href="/checklists/<%= c._id %>">Click Here</a></td>
+          <td>
+            <td>
+              <form
+            action="/checklists/<%= c._id %>"
+            method="GET" 
+          >
+          <button type="submit">Trip Details</button></form></td>
+          <td>
+          <form
+          action="/checklists/<%= idx %>?_method=DELETE"
+          class="delete-form"
+          method="POST" 
+        >
+        <button type="submit">Delete</button></form></td>
+          
         </tr>
         
         <% }); %>
