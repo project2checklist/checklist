@@ -7,6 +7,7 @@ module.exports = {
     show,
     create,
     delete: deleteTrip,
+    update
   
     //update
 }
@@ -52,8 +53,19 @@ function deleteTrip(req, res){
         // res.redirect("/checklists");
 
 
-// function update(req, res) {
-// 	req.body.done = req.body.done === 'on';
-// 	Todo.update(req.params.id, req.body);
-// 	res.redirect('/todos');
-// }
+function update(req, res) {
+    // Checklist.findByIdAndUpdate(req.params.id, function(err, checklist) { 
+    //     console.log("req.params.id") 
+    //     res.redirect(`/checklists/${checklist._id}`);
+    Checklist.findByIdAndUpdate(req.params.id, req.body, function(err, checklist) {
+        res.redirect(`/checklists/${checklist.id}`)
+
+	// Checklist.findOne({'checklist._id': req.params.id}, function (err,checklist) {
+    //     const updateTrip = checklist.id(req.params.id);
+    //     if(!updateTrip) return res.redirect(`/checklists/${checklist._id}`);
+    //     updateTrip.content =req.body.content;
+    //     checklist.save(function(err) {
+    //         res.redirect(`checklists/index`);
+    //     });
+    })
+}

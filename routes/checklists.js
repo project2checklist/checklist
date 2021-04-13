@@ -18,6 +18,7 @@ router.get("/:id", checklistsCtrl.show);
 router.post('/', checklistsCtrl.create)
 
 router.delete("/:id",checklistsCtrl.delete);
-//Add an item 
+//Update an intem 
+router.put("/:id", checklistsCtrl.update);
 
   module.exports = router;

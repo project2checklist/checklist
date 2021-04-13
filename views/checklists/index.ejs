@@ -32,6 +32,15 @@
              <a href="/checklists/<%= c._id %>"><button type="submit">Trip Details</button></a>
             </td>
             <td>
+              <form
+              action="/checklists/<%= c._id %>?_method=PUT"
+              class="update-form"
+              method="POST" 
+            >
+            <button type="submit">Update</button></form></td>
+              
+            </td>
+            <td>
           <form
           action="/checklists/<%= c._id %>?_method=DELETE"
           class="delete-form"
