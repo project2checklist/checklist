@@ -6,10 +6,10 @@ const checklistsCtrl = require('../controllers/checklists');
 
 //Show the main page with all items 
 router.get('/', checklistsCtrl.index);
-
+router.get("/new", checklistsCtrl.new)
 router.get("/:id", checklistsCtrl.show)
 
-router.get("/new", checklistsCtrl.new)
+
 //Post all items 
 router.post('/', checklistsCtrl.create)
 

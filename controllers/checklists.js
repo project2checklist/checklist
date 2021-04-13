@@ -42,9 +42,9 @@ function deleteTrip(req, res){
       
 
 function show(req, res){
-    const checklist = c._id;
+   
     Checklist.findById(req.params.id, function(err, checklist){
-        res.render(`/checklists/${c._id}`);
+        res.render(`/checklists/${checklist._id}`,{c:checklist});
     });
     
 }
