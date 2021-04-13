@@ -57,7 +57,10 @@ function update(req, res) {
     // Checklist.findByIdAndUpdate(req.params.id, function(err, checklist) { 
     //     console.log("req.params.id") 
     //     res.redirect(`/checklists/${checklist._id}`);
+    console.log("re", req.body);
+    
     Checklist.findByIdAndUpdate(req.params.id, req.body, function(err, checklist) {
+        console.log("checklist", checklist); 
         res.redirect(`/checklists/${checklist.id}`)
 
 	// Checklist.findOne({'checklist._id': req.params.id}, function (err,checklist) {

@@ -67,7 +67,19 @@
   
 </body>
 </html>
-
+<table>
+  <form action="/checklists/<%= checklist._id %>?_method=PUT" method="POST" class="update-button">    
+    <label>Date of Trip </labeL>
+      <input type="datetime-local" name="dateOfTrip">
+  <label>Destination</label>
+  <input type="text" name="destination">
+  <label>Length of Stay</label>
+  <input type="text" name="lengthOfStay" placeholder="No. of Days/No. of Nights">
+    <input type="submit" value="Update Trip">
+  </form> 
+</tr>
+</tbody>
+</table>
 <thead>
   <tr>
     <th>Date of Trip</th>
@@ -80,6 +92,14 @@
     <td><%= checklist.dateOfTrip %></td>
     <td><%= checklist.destination %></td>
     <td><%= checklist.lengthOfStay %></td> 
+    <td>
+      <form
+      action="/checklists/<%= checklist._id %>?_method=PUT"
+      class="update-form"
+      method="POST" 
+    >
+ 
+    </td>
   </tr>
 </tbody>
 </table>
