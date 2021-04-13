@@ -32,15 +32,19 @@ function create(req,res){
 }
 
 function deleteTrip(req, res){
-        Checklist.deleteOne(req.params.id);
-        res.redirect("/checklists");
-      }
+        Checklist.findByIdAndRemove(req.params.id, function(err, checklist) {   
+            res.redirect('/checklists');
+        })
+    }
+        // Checklist.deleteTrip(req.params.id);
+        // res.redirect("/checklists");
+      
       
 
 function show(req, res){
-    const checklist = c._id;
+   
     Checklist.findById(req.params.id, function(err, checklist){
-        res.render(`/checklists/${c._id}`);
+        res.render(`/checklists/${checklist._id}`,{c:checklist});
     });
     
 }
