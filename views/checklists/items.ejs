@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+
+  <body>
+    <h1><%= title %></h1>
+    <% if (checklist.items.length) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Items</th>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <% checklist.items.forEach(function(c) { %>
+              <tr>
+                <td><%= c.name %></td>
+                <td><%= c.section %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <h5>No Items Yet</h5>
+      <% } %>
+      <% if (items.length) { %>
+        <table>
+          <thead>
+            <tr>
+              <th>Added Items</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% items.forEach(function(i) { %>
+              <tr>
+                <td><%= i.name %></td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <h5>No Items Yet</h5>
+      <% } %> 
+  </body>
+</html>

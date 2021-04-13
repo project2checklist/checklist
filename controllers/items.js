@@ -1,15 +1,15 @@
 const Checklist = require("../models/checklist")
-const Item = require("../models/checklist")
+//const Item = require("../models/checklist")
 
 module.exports = {
-    create,
+    create
 };
 
-function create (req, res){
-    Item.find({}, function (err, items) {
-        res.render("checklists/new", {
-          title: "Ticket",
-         items,
+// function create (req, res){
+//     Item.find({}, function (err, items) {
+//         res.redirect('/checklists/show', {
+//           title: "Items",
+//          items,
     // Checklist.findById(req.params.id, function(err, checklist){
     //     checklist.items.push(req.body);
     //     checklist.save(function(err){
@@ -30,9 +30,17 @@ function create (req, res){
     //   res.redirect("/checklists")
     // })
     
-        })
+//         })
 
-    }
+//     }
 
-)}
+// )}
 
+function create(req, res) {
+    Checklist.findById(req.params.id, function(err, checklist) {
+        checklist.items.push(req.body);
+        checklist.save(function(err) {
+            res.redirect(`/checklists/${checklist._id}`);
+        });
+    });
+}

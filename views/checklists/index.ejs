@@ -9,7 +9,7 @@
     <h1><%= title %></h1>
 
     <form id="add-an-item" action="/checklists/new" method="GET">
-      <button type="submit">Create Checklist</button>
+      <button type="submit">Add Trip</button>
     </form>
 
   
@@ -25,15 +25,12 @@
       <tbody>
         <% checklists.forEach(function(c) { %>
         <tr>
-         
-       
           <td><%= c.dateOfTrip %></td>
           <td><%= c.destination %></td>
           <td><%= c.lengthOfStay %></td>
-          
            <td>
-             <a href="/checklists/<%= c._id %>">Trip Details</a></td>
-            
+             <a href="/checklists/<%= c._id %>"><button type="submit">Trip Details</button></a>
+            </td>
             <td>
           <form
           action="/checklists/<%= c._id %>?_method=DELETE"

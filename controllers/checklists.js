@@ -6,7 +6,8 @@ module.exports = {
     new: newItem,
     create,
     delete: deleteTrip,
-    show
+    show,
+    //update
 }
 
 function index(req, res) {
@@ -16,7 +17,8 @@ function index(req, res) {
 }
 
 function newItem(req, res){
-    res.render("checklists/new", { title: "Add Packing Item" });
+    console.log(checklist);
+    res.render("checklists/new", { title: "Add Trip" });
 }
 
 function create(req,res){
@@ -25,7 +27,7 @@ function create(req,res){
   checklist.save(function (err) {
     // one way to handle errors
     if (err) return res.json({error: err });
-    console.log(checklist);
+    console.log("/checklists");
     // for now, redirect right back to new.ejs
     res.redirect("/checklists");
   });
@@ -38,13 +40,16 @@ function deleteTrip(req, res){
     }
         // Checklist.deleteTrip(req.params.id);
         // res.redirect("/checklists");
-      
-      
 
 function show(req, res){
-   
-    Checklist.findById(req.params.id, function(err, checklist){
-        res.render(`/checklists/${checklist._id}`,{c:checklist});
-    });
-    
+    const checklist = req.params.id;
+    Checklist.findById(req.params.id, function(err, checklist) {
+        res.render('checklists/show', { title: "Trip Details", checklist })
+    });    
 }
+
+// function update(req, res) {
+// 	req.body.done = req.body.done === 'on';
+// 	Todo.update(req.params.id, req.body);
+// 	res.redirect('/todos');
+// }
