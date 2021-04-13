@@ -7,21 +7,64 @@
     <title><%= title %></title>
 </head>
 <body>
-<table>
-    <tr>
-      <td><%= checklist.dateOfTrip %></td>
-      <td><%= checklist.destination %></td>
-      <td><%= checklist.lengthOfStay %></td>      
-    </tr>    
-</table>
+ 
 <h3>Add Packing List </h3> 
 <!-- We need to work on this form to get it to link and render properly -->
 <form action="/checklists/<%= checklist._id %>/items/" method="POST">
-    <label>Item </labeL>
-      <input type="text" name="items">
+    <label>Item 
+      <select name= "name">
+        <option>Hat</option>
+        <option>Scarf</option>
+        <option>Mittens</option>
+        
+      </select>
+    </labeL>
+      <br>
+      
    <input type="submit" value="Add Item">
   </form>
+  <% if(checklist.items.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Quantity</th>
+          <th>Section</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% checklist.items.forEach(function(d){ %>
+        <tr>
+          <td><%= d.name %></td>
+          <td><%= d.quantity %></td>
+          <td><%= d.section %></td>
+        </tr>
+        <% });%>
+      </tbody>
+    </table>
+    <% } else { %>
+    <h3>No New Destinations</h3>
+    <% } %>
 <!-- Add delete and update capabilities for packing list items -->
 <!-- Add update capabilities to update trip details -->
+<br><br>
+<table>
+  
 </body>
 </html>
+
+<thead>
+  <tr>
+    <th>Date of Trip</th>
+    <th>Destination</th>
+    <th>Length of Stay</th>  
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><%= checklist.dateOfTrip %></td>
+    <td><%= checklist.destination %></td>
+    <td><%= checklist.lengthOfStay %></td> 
+  </tr>
+</tbody>
+</table>

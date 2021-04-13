@@ -4,9 +4,10 @@ const Checklist = require('../models/checklist');
 module.exports = {
     index,
     new: newItem,
+    show,
     create,
     delete: deleteTrip,
-    show,
+  
     //update
 }
 
@@ -16,8 +17,16 @@ function index(req, res) {
     });
 }
 
+
+function show(req, res){
+    // const checklist = req.params.id;
+    Checklist.findById(req.params.id, function(err, checklist) {
+        res.render('checklists/show', { title: "Trip Details", checklist })
+    });    
+}
+
 function newItem(req, res){
-    console.log(checklist);
+    console.log('checklist/new');
     res.render("checklists/new", { title: "Add Trip" });
 }
 
@@ -33,6 +42,7 @@ function create(req,res){
   });
 }
 
+
 function deleteTrip(req, res){
         Checklist.findByIdAndRemove(req.params.id, function(err, checklist) {   
             res.redirect('/checklists');
@@ -41,12 +51,6 @@ function deleteTrip(req, res){
         // Checklist.deleteTrip(req.params.id);
         // res.redirect("/checklists");
 
-function show(req, res){
-    const checklist = req.params.id;
-    Checklist.findById(req.params.id, function(err, checklist) {
-        res.render('checklists/show', { title: "Trip Details", checklist })
-    });    
-}
 
 // function update(req, res) {
 // 	req.body.done = req.body.done === 'on';

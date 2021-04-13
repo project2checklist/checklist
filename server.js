@@ -8,7 +8,7 @@ require('./config/database')
 
 var indexRouter = require('./routes/index');
 var checklistRouter = require('./routes/checklists');
-const basicsRouter = require('./routes/basics');
+const itemsRouter = require('./routes/items');
 
 var app = express();
 
@@ -25,7 +25,7 @@ app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/checklists', checklistRouter);
-app.use('/', basicsRouter);
+app.use('/', itemsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

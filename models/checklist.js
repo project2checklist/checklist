@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // const basicSchema = new Schema(
@@ -29,33 +29,44 @@ const Schema = mongoose.Schema;
 //     }
 // })
 
-
-
-const itemsSchema = new Schema({
-    name: String,
-    quantity: {type: Number, min: 0, max: 5, default: 1},
-    section: {type: String,enum: ["Essentials", "Clothing", "Toiletries", "Technology", "Entertainment", "Accessories"] }
-  }, {
-    timestamps: true
-  });
-
-const checklistSchema = new Schema({
-    dateOfTrip: {
-        type: Date
+const itemsSchema = new Schema(
+  {
+    name: { type: String, enum: ["Hat", "Mittens", "Scarf"] },
+    quantity: { type: Number, min: 0, max: 5, default: 1 },
+    section: {
+      type: String,
+      enum: [
+        "Essentials",
+        "Clothing",
+        "Toiletries",
+        "Technology",
+        "Entertainment",
+        "Accessories",
+      ],
     },
-    destination: {
-        type: String
-    },
-    lengthOfStay: {
-        type: String
-        //Check out methods for range of dates
-    },
-    items: [itemsSchema]
-},
-{ 
-    timestamps: true
-}
+  },
+  {
+    timestamps: true,
+  }
 );
 
+const checklistSchema = new Schema(
+  {
+    dateOfTrip: {
+      type: Date,
+    },
+    destination: {
+      type: String,
+    },
+    lengthOfStay: {
+      type: String,
+      //Check out methods for range of dates
+    },
+    items: [itemsSchema],
+  },
+  {
+    timestamps: true,
+  }
+);
 
-module.exports = mongoose.model('Checklist', checklistSchema);
+module.exports = mongoose.model("Checklist", checklistSchema);

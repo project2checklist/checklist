@@ -2,7 +2,7 @@ const Checklist = require("../models/checklist")
 //const Item = require("../models/checklist")
 
 module.exports = {
-    create
+    create,
 };
 
 // function create (req, res){
