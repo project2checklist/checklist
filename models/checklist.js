@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const itemsSchema = new Schema(
   {
-    item: { type: String},
+    item: { type: String },
     quantity: { type: Number, min: 0, max: 5, default: 1 },
     section: {
       type: String,
@@ -32,7 +32,6 @@ const checklistSchema = new Schema(
     },
     lengthOfStay: {
       type: String,
-      //Check out methods for range of dates
     },
     items: [itemsSchema],
   },
