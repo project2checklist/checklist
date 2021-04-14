@@ -1,19 +1,16 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
 }
 
 a {
   color: #00B7FF;
 }
 
-.background{
- 
-    background-image: url(‘pictures/background.jpg’);
-    background-size: cover;
-    background-repeat: no-repeat;
-   }
-
+.bg{
+  background: lightyellow
+}
 .title{
   text-align:center;
   /* border: solid;

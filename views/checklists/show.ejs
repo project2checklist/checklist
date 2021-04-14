@@ -8,17 +8,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <title><%= title %></title>
 </head>
-<body>
- 
-<h1 class="title ">Add Packing List </h1> 
-<br>
+<body class="bg">
+  <a type="submit" href="/checklists"  class="text-success float-right">Home</a>
+<h1 class="title ">Your Detailed Packing List </h1> 
+
+<br><br>
 <table>
+  <h3><ins>Add Packing Item</ins></h3>
+  <br>
   <form action="/checklists/<%= checklist._id %>/items" method="POST" class="add-item">    
-    <label>Item</labeL>
+    <label class="mr-2">Item</labeL>
       <input type="text" name="item">
   <br><br>
-  <label>Quantity</label>
+  <label class="mr-2">Quantity</label>
   <select name="quantity">
+    <option></option>
     <option value=1>1</option>
     <option value=2>2</option>
     <option value=3>3</option>
@@ -26,7 +30,9 @@
     <option value=5>5</option>
   </select>
   <br><br>
-  <select name="section">
+  <label class="mr-2">Section</label>
+  <select  name="section">
+    <option ></option>
     <option value="Essentials">Essentials</option>
     <option value="Clothing">Clothing</option>
     <option value="Technology">Technology</option>
@@ -43,21 +49,25 @@
 </table>
   <br>
   <% if(checklist.items.length) { %>
-    <table>
+    <table class="table table-bordered text-center table-hover">
       <thead>
-        <tr >
-          <th class="titleCenter">Name</th>
-          <th class="titleCenter">Quantity</th>
-          <th class="titleCenter">Section</th>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Section</th>
+          <th scope="col">Delete Item</th>
         </tr>
       </thead>
       <tbody>
+        <h3><ins>Packing List</ins></h2>
+          <br>
         <% checklist.items.forEach(function(d){ %>
         <tr>
           <td class="titleCenter"><%= d.item %></td>
           <td class="titleCenter"><%= d.quantity %></td>
           <td class="titleCenter"><%= d.section %></td>
           <td>
+        
             <form action="/items/<%=  d._id %>?_method=DELETE" class="delete-form" method="POST" >
               <button type="button submit" class="btn btn-outline-danger">Delete</button>
             </form>
@@ -71,33 +81,37 @@
 <br><br><hr>
 
   <table>
+    <h3><ins>Update Trip</ins></h3>
+    <br>
     <form action="/checklists/<%= checklist._id %>?_method=PUT" method="POST" class="update-button">    
-      <label>Date of Trip </labeL>
+      <label class="mr-2">Date of Trip </labeL>
         <input type="date" name="dateOfTrip">
         <br><br>
-    <label>Destination</label>
+    <label class="mr-2">Destination</label>
     <input type="text" name="destination">
     <br><br>
-    <label>Length of Stay</label>
-    <input type="text" name="lengthOfStay" placeholder="No. of Days/No. of Nights">
+    <label class="mr-2">Length of Stay</label>
+    <input type="text" name="lengthOfStay" placeholder="No. of Days/Nights">
     <br><br>
-    <button type="button submit" class="btn btn-outline-warning"  value="Update Trip">Update Trip</button>
+    <button type="button submit" class="btn btn-outline-warning"  value="Update Trip">Update</button>
     
     </form>
     <br><br><hr>
   </tr>
   </tbody>
   </table>
-  <table>
+  <table class="table table-bordered text-center table-hover">
+    <h3><ins>Updated Trip Details</ins></h3>
+    <br>
   <thead>
-    <tr class="titleCenter">
-      <th>Date of Trip</th>
-      <th>Destination</th>
-      <th>Length of Stay</th>  
+    <tr >
+      <th scope="col" >Date of Trip</th>
+      <th scope="col" >Destination</th>
+      <th scope="col" >Length of Stay</th>  
     </tr>
   </thead>
   <tbody>
-    <tr class="heading">
+    <tr>
       <td><%= checklist.dateOfTrip %></td>
       <td><%= checklist.destination %></td>
       <td><%= checklist.lengthOfStay %></td> 
@@ -114,7 +128,7 @@
   </table>
   
   <br>
-    <a type="button submit" href="/checklists"  class="btn btn-outline-success">Home</a>
+   
   
   
   
