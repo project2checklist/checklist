@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <title><%= title %></title>
 </head>
 <body>
  
-<h3>Add Packing List </h3> 
-<!-- We need to work on this form to get it to link and render properly -->
+<h1 class="title ">Add Packing List </h1> 
+<br>
 <form action="/checklists/<%= checklist._id %>/items/" method="POST">
-    <label>Item 
+    <label>Item </labeL>
+      
       <select name= "name">
         <option>Hat</option>
         <option>Scarf</option>
         <option>Mittens</option>
       </select>
-    </labeL>
-      <br>
+  
+      <br><br>
       <label>Quantity</label>
       <select name= "quantity">
         <option>1</option>
@@ -27,6 +30,7 @@
         <option>4</option>
         <option>5</option>
       </select>
+      <br><br>
       <label>Section</label>
       <select name= "section">
         <option>Essentials</option>
@@ -35,13 +39,17 @@
         <option>Entertainment</option>
         <option>Accessories</option>
       </select>
-      
-   <input type="submit" value="Add Item">
+      <br><br>
+      <button type="button submit" class="btn btn-outline-primary">Add Item</button>
+  
+   
   </form>
+  <br>
+  
   <% if(checklist.items.length) { %>
     <table>
       <thead>
-        <tr>
+        <tr >
           <th>Name</th>
           <th>Quantity</th>
           <th>Section</th>
@@ -57,55 +65,64 @@
         <% });%>
       </tbody>
     </table>
-    <% } else { %>
-    <h3>No New Destinations</h3>
+
     <% } %>
 <!-- Add delete and update capabilities for packing list items -->
 <!-- Add update capabilities to update trip details -->
-<br><br>
-<table>
+<br><br><hr>
+
+  <table>
+    <form action="/checklists/<%= checklist._id %>?_method=PUT" method="POST" class="update-button">    
+      <label>Date of Trip </labeL>
+        <input type="datetime-local" name="dateOfTrip">
+        <br><br>
+    <label>Destination</label>
+    <input type="text" name="destination">
+    <br><br>
+    <label>Length of Stay</label>
+    <input type="text" name="lengthOfStay" placeholder="No. of Days/No. of Nights">
+    <br><br>
+    <button type="button submit" class="btn btn-outline-warning"  value="Update Trip">Update Trip</button>
+    
+    </form>
+    <br><br><hr>
+  </tr>
+  </tbody>
+  </table>
+  <table>
+  <thead>
+    <tr class="titleCenter">
+      <th>Date of Trip</th>
+      <th>Destination</th>
+      <th>Length of Stay</th>  
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="heading">
+      <td><%= checklist.dateOfTrip %></td>
+      <td><%= checklist.destination %></td>
+      <td><%= checklist.lengthOfStay %></td> 
+      <td>
+        <form
+        action="/checklists/<%= checklist._id %>?_method=PUT"
+        class="update-form"
+        method="POST" 
+      >
+      
+      </td>
+    </tr>
+  </tbody>
+  </table>
   
+  <br>
+    <a type="button submit" href="/checklists"  class="btn btn-outline-success">Home</a>
+  
+  
+  
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
 </body>
 </html>
-<table>
-  <form action="/checklists/<%= checklist._id %>?_method=PUT" method="POST" class="update-button">    
-    <label>Date of Trip </labeL>
-      <input type="datetime-local" name="dateOfTrip">
-  <label>Destination</label>
-  <input type="text" name="destination">
-  <label>Length of Stay</label>
-  <input type="text" name="lengthOfStay" placeholder="No. of Days/No. of Nights">
-    <input type="submit" value="Update Trip">
-  </form> 
-</tr>
-</tbody>
-</table>
-<thead>
-  <tr>
-    <th>Date of Trip</th>
-    <th>Destination</th>
-    <th>Length of Stay</th>  
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td><%= checklist.dateOfTrip %></td>
-    <td><%= checklist.destination %></td>
-    <td><%= checklist.lengthOfStay %></td> 
-    <td>
-      <form
-      action="/checklists/<%= checklist._id %>?_method=PUT"
-      class="update-form"
-      method="POST" 
-    >
-    
-    </td>
-  </tr>
-</tbody>
-</table>
 
-<button>
-<a href="/checklists">Home</a>
-</button>
-
-</html>

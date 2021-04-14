@@ -1,8 +1,35 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  
+
 }
 
 a {
   color: #00B7FF;
+}
+
+.title{
+  text-align:center;
+  /* border: solid;
+  border-radius: 10px; */
+}
+
+.addTrip{
+  text-align:center;
+  line-height: 2.0;
+}
+
+.heading {
+  text-align:center;
+  line-height: 2.0;
+  border: solid;
+  border-radius: 10px;
+ 
+ 
+}
+
+.titleCenter{
+  text-align:center;
+  
 }
