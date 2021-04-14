@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/checklist',
+mongoose.connect(process.env.DATABASE_URL,
   { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false }
 );
 
@@ -8,6 +8,7 @@ mongoose.connect('mongodb://localhost/checklist',
 const db = mongoose.connection;
 
 db.on('connected', function () {
+  console.log(process.env.DATABASE_URL)
   console.log(`Connected to MongoDB at ${db.host}:${db.port}`);
 });
 
