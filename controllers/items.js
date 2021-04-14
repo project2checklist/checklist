@@ -4,7 +4,6 @@ const Item = require("../models/checklist")
 module.exports = {
     create,
     delete: deleteItem,
-    update: updateItem,
 };
 
 function create(req, res) {
@@ -23,10 +22,4 @@ function deleteItem(req, res) {
             res.redirect(`/checklists/${checklist._id}`)
         })
     });
-}
-
-function updateItem(req, res) {
-	req.body.done = req.body.done === 'on';
-	Item.update(req.params.id, req.body);
-	res.redirect(`/checklists/${checklist._id}`);
 }
