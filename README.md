@@ -2,7 +2,7 @@
 
 For the second project in the course, we were paired up to create a simple full-stack application utilizing the technologies. Our application is a travel checklist app designed to create the "ultimate travel packing list" for travelers to ensure they pack everything they need to make their trip as enjoyable as possible.
 
-#### Link for app:
+#### Link for app:https://ultimate-travel-packing-list.herokuapp.com/checklists
 
 ## Screenshots
 ![Main Page](images/index.png)
