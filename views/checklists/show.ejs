@@ -12,69 +12,68 @@
  
 <h1 class="title ">Add Packing List </h1> 
 <br>
-<form action="/checklists/<%= checklist._id %>/items/" method="POST">
-    <label>Item </labeL>
-      
-      <select name= "name">
-        <option>Hat</option>
-        <option>Scarf</option>
-        <option>Mittens</option>
-      </select>
-  
-      <br><br>
-      <label>Quantity</label>
-      <select name= "quantity">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-      </select>
-      <br><br>
-      <label>Section</label>
-      <select name= "section">
-        <option>Essentials</option>
-        <option>Clothing</option>
-        <option>Toiletries</option>
-        <option>Entertainment</option>
-        <option>Accessories</option>
-      </select>
-      <br><br>
-      <button type="button submit" class="btn btn-outline-primary">Add Item</button>
-  
-   
+<table>
+  <form action="/checklists/<%= checklist._id %>/items" method="POST" class="add-item">    
+    <label>Item</labeL>
+      <input type="text" name="item">
+  <br><br>
+  <label>Quantity</label>
+  <select name="quantity">
+    <option value=1>1</option>
+    <option value=2>2</option>
+    <option value=3>3</option>
+    <option value=4>4</option>
+    <option value=5>5</option>
+  </select>
+  <br><br>
+  <select name="section">
+    <option value="Essentials">Essentials</option>
+    <option value="Clothing">Clothing</option>
+    <option value="Technology">Technology</option>
+    <option value="Toiletries">Toiletries</option>
+    <option value="Accessories">Accessories</option>
+    <option value="Entertainment">Entertainment</option>
+  </select>
+  <br><br>
+  <button type="button submit" class="btn btn-outline-primary"  value="Add Item">Add Item</button>
   </form>
+  <br><br><hr>
+</tr>
+</tbody>
+</table>
   <br>
-  
   <% if(checklist.items.length) { %>
     <table>
       <thead>
         <tr >
-          <th>Name</th>
-          <th>Quantity</th>
-          <th>Section</th>
+          <th class="titleCenter">Name</th>
+          <th class="titleCenter">Quantity</th>
+          <th class="titleCenter">Section</th>
         </tr>
       </thead>
       <tbody>
         <% checklist.items.forEach(function(d){ %>
         <tr>
-          <td><%= d.name %></td>
-          <td><%= d.quantity %></td>
-          <td><%= d.section %></td>
+          <td class="titleCenter"><%= d.item %></td>
+          <td class="titleCenter"><%= d.quantity %></td>
+          <td class="titleCenter"><%= d.section %></td>
+          <td>
+            <form action="/items/<%=  d._id %>?_method=DELETE" class="delete-form" method="POST" >
+              <button type="button submit" class="btn btn-outline-danger">Delete</button>
+            </form>
+        </td>
         </tr>
         <% });%>
       </tbody>
     </table>
 
     <% } %>
-<!-- Add delete and update capabilities for packing list items -->
-<!-- Add update capabilities to update trip details -->
 <br><br><hr>
 
   <table>
     <form action="/checklists/<%= checklist._id %>?_method=PUT" method="POST" class="update-button">    
       <label>Date of Trip </labeL>
-        <input type="datetime-local" name="dateOfTrip">
+        <input type="date" name="dateOfTrip">
         <br><br>
     <label>Destination</label>
     <input type="text" name="destination">

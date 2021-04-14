@@ -1,8 +1,6 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  
-
 }
 
 a {
@@ -25,7 +23,23 @@ a {
   line-height: 2.0;
   border: solid;
   border-radius: 10px;
- 
+  background:
+	linear-gradient(
+		limegreen,
+		transparent
+	),
+	linear-gradient(
+		90deg,
+		skyblue,
+		transparent
+	),
+	linear-gradient(
+		-90deg,
+		coral,
+		transparent
+	);
+	
+background-blend-mode: screen;
  
 }
 
